@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { VERSION } from './commons/globals/constants';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'appCademia';
+
+  title = 'appCademia V'+VERSION;
+  constructor(private titleService: Title) {
+    this.titleService.setTitle(this.title);
+  }
 }
