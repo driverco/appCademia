@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { LangmenuComponent } from './langmenu.component';
+
+describe('LangmenuComponent', () => {
+  let component: LangmenuComponent;
+  let fixture: ComponentFixture<LangmenuComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [LangmenuComponent]
+    });
+    fixture = TestBed.createComponent(LangmenuComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

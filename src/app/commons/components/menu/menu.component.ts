@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 import { LinksService } from '../../services/links.service';
 import { Router } from '@angular/router';
+import { APPTITLE, VERSION } from '../../globals/constants';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'commons-menu',
@@ -9,20 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
-  auth: boolean = false;
-  items: MenuItem[] | undefined;
-  visible: boolean = false;
+  appTitle = APPTITLE;
+  version = VERSION;
+  menuItems:any[] = [];
 
   constructor(
     private linksService: LinksService,
-    private router: Router
-  ) {
-  }
-  showDialog() {
-    this.visible = true;
-  }
-  closeDialog(mapId: string) {
-    this.visible = false;
-    this.router.navigate(['/maps/' + mapId]);
-  }
+    private router: Router,
+    private translocoService: TranslocoService
+  ) {this.linksService.getLinks().then((links) => { this.menuItems = links })}
 }
